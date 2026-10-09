@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 242 245 247;
+  --surface: 255 255 255;
+  --surface-2: 235 239 243;
+  --line: 216 223 230;
+  --ink: 20 26 33;
+  --muted: 95 107 120;
+  --brand: 15 110 122;
+  --brand-ink: 255 255 255;
+  --ok: 21 115 74;
+  --warn: 142 84 0;
+  --danger: 196 52 52;
+  --danger-ink: 255 255 255;
+  color-scheme: light;
+}
+.dark {
+  --bg: 13 17 21;
+  --surface: 20 26 32;
+  --surface-2: 29 37 45;
+  --line: 42 52 62;
+  --ink: 232 237 242;
+  --muted: 142 155 168;
+  --brand: 62 190 202;
+  --brand-ink: 6 20 24;
+  --ok: 72 190 134;
+  --warn: 232 170 50;
+  --danger: 238 104 104;
+  --danger-ink: 40 6 6;
+  color-scheme: dark;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-bg text-ink font-sans antialiased; }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-bg; }
+  ::selection { background: rgb(var(--brand) / 0.25); }
+}
+
+@layer utilities {
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+@keyframes sweep { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: var(--to); } }
+@keyframes pop-in { from { opacity: 0; transform: translateY(6px) scale(.98); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

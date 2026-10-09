@@ -1,0 +1,5 @@
+# Minimal config so the Supabase CLI can deploy the Edge Function from this folder.
+project_id = "autocare360"
+
+[functions.ai]
+verify_jwt = true
